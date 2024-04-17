@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Practice</title>
+</head>
+
+<body>
+    Class Practice<br><br>
+
+    <div id="myDiv">
+        <br>
+        <input id="txt1">
+        <input id="txt2">
+        <br><br>
+    </div>
+    <br><br>
+    <button id="btn2" onclick="nobtn()">click that button ---> </button>
+    <button id="btn1" onclick="yesbtn()"></button><br><br><br>
+    Number of clicks:
+    <button id="clickButton" onclick="countClicks()">0</button><br>
+    Subtract a digit: 
+    <button id="subtractButton" onclick="subtractClicks()">-1</button><br>
+    Reset:
+    <button id="resetButton" onclick="resetCounter()">Reset</button>
+
+    <script>
+        txt1.value = 'Aviad';
+        txt2.value = 'Reich';
+
+        txt1.style.color = 'blue';
+        txt2.style.color = 'red';
+
+        myDiv.style.backgroundColor = 'yellow';
+
+        btn1.innerText = 'MyButton';
+        btn1.style.backgroundColor = 'red';
+        btn1.style.color = 'blue';
+        btn1.style.borderRadius = '60px 60px 60px 60px';
+        btn1.style.width = '200px';
+        btn1.style.height = '50px';
+        btn1.style.fontSize = '30px';
+        txt1.style.marginLeft = '20px';
+        btn1.style.marginLeft = '20px';
+        btn2.style.marginLeft = '20px';
+        clickButton.style.backgroundColor = 'blue';
+        clickButton.style.color = 'red';
+        clickButton.style.borderRadius = '60px 60px 60px 60px';
+        clickButton.style.width = '200px';
+        clickButton.style.height = '50px';
+        clickButton.style.fontSize = '30px';
+
+        function yesbtn() {
+            alert ('Great');
+        }
+        function nobtn() {
+            alert ('Not this button! The button on the right!')
+        }
+        var clickCount = 0;
+
+        function countClicks() {
+            clickCount++;
+            clickButton.textContent = clickCount;
+        }
+
+        function subtractClicks() {
+            clickCount--;
+            clickButton.textContent = clickCount;
+        }
+
+        function resetCounter() {
+            clickCount = 0;
+            clickButton.textContent = clickCount;
+        }
+    </script>
+</body>
+
+</html>
