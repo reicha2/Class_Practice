@@ -42,6 +42,8 @@
         <input type="password" id="password" name="password" required><br><br>
         <button type="button" onclick="login()">Login</button>
         <button id="randomColorButton" style="position: absolute; top: 50%; left: 50%;">Random Color Button</button>
+        <img id="movingImage" src="media/football-157930_1280.png"
+            style="position: absolute; top: 50%; left: 50%; width: 200px; height: 200px;">
 
 
 
@@ -208,6 +210,42 @@
         // Call the functions initially and every 2 seconds
         setInterval(changeButtonColor, 2000);
         setInterval(moveButtonRandomly, 20); // Adjust the interval for smoother or faster movement
+
+        // Select the moving image
+        var movingImage = document.getElementById("movingImage");
+
+        // Set initial position and velocity for the image
+        var imagePositionX = 50; // initial X position (left)
+        var imagePositionY = 50; // initial Y position (top)
+        var imageVelocityX = 3; // initial X velocity
+        var imageVelocityY = 2; // initial Y velocity
+
+        // Function to move the image randomly
+        function moveImageRandomly() {
+            var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+
+            // Update position based on velocity
+            imagePositionX += imageVelocityX;
+            imagePositionY += imageVelocityY;
+
+            // Check collision with left or right side
+            if (imagePositionX <= 0 || imagePositionX + movingImage.offsetWidth >= screenWidth) {
+                imageVelocityX = -imageVelocityX; // Reverse X velocity
+            }
+
+            // Check collision with top or bottom side
+            if (imagePositionY <= 0 || imagePositionY + movingImage.offsetHeight >= screenHeight) {
+                imageVelocityY = -imageVelocityY; // Reverse Y velocity
+            }
+
+            // Update image position
+            movingImage.style.left = imagePositionX + "px";
+            movingImage.style.top = imagePositionY + "px";
+        }
+
+        // Call the function every 20 milliseconds for smoother movement
+        setInterval(moveImageRandomly, 20);
 
 
     </script>
