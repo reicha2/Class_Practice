@@ -21,7 +21,7 @@
     <button id="addButtonsButton" onclick="addButtons()">Add 5 Buttons</button><br><br>
     <button id="btn2" onclick="nobtn()">click that button ---> </button>
     <button id="btn1" onclick="yesbtn()">MyButton</button><br><br><br>
-    
+
     Number of clicks:
     <button id="clickButton" onclick="countClicks()">0</button><br>
     Subtract a digit:
@@ -30,7 +30,7 @@
     <button id="resetButton" onclick="resetCounter()">Reset</button><br><br>
     <h2>Fun Buttons</h2>
     <button id="multiplicationButton" onclick="showMultiplicationTable()">Try Me if you like Math!</button><br><br>
-    
+
 
     <div id="table"></div>
 
@@ -41,6 +41,11 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
         <button type="button" onclick="login()">Login</button>
+        <button id="randomColorButton" style="position: absolute; top: 50%; left: 50%;">Random Color Button</button>
+
+
+
+
     </form>
 
     <script>
@@ -151,6 +156,60 @@
         }
 
         setInterval(count, 1000);
+
+        // Select the random color button
+        var randomColorButton = document.getElementById("randomColorButton");
+
+        // Set initial position and velocity
+        var positionX = 50; // initial X position (left)
+        var positionY = 50; // initial Y position (top)
+        var velocityX = 2; // initial X velocity
+        var velocityY = 3; // initial Y velocity
+
+        // Function to generate a random color
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Function to change the color of the button randomly
+        function changeButtonColor() {
+            randomColorButton.style.backgroundColor = getRandomColor();
+        }
+
+        // Function to move the button randomly
+        function moveButtonRandomly() {
+            var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+
+            // Update position based on velocity
+            positionX += velocityX;
+            positionY += velocityY;
+
+            // Check collision with left or right side
+            if (positionX <= 0 || positionX + randomColorButton.offsetWidth >= screenWidth) {
+                velocityX = -velocityX; // Reverse X velocity
+            }
+
+            // Check collision with top or bottom side
+            if (positionY <= 0 || positionY + randomColorButton.offsetHeight >= screenHeight) {
+                velocityY = -velocityY; // Reverse Y velocity
+            }
+
+            // Update button position
+            randomColorButton.style.left = positionX + "px";
+            randomColorButton.style.top = positionY + "px";
+        }
+
+        // Call the functions initially and every 2 seconds
+        setInterval(changeButtonColor, 2000);
+        setInterval(moveButtonRandomly, 20); // Adjust the interval for smoother or faster movement
+
+
     </script>
 </body>
 
