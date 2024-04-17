@@ -26,6 +26,17 @@
     Reset:
     <button id="resetButton" onclick="resetCounter()">Reset</button>
 
+    <div>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
     <script>
         txt1.value = 'Aviad';
         txt2.value = 'Reich';
@@ -73,6 +84,18 @@
         function resetCounter() {
             clickCount = 0;
             clickButton.textContent = clickCount;
+        }
+
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if username and password match
+            if (username === "aviad" && password === "1234") {
+                alert("Welcome");
+            } else {
+                alert("Username or password incorrect");
+            }
         }
     </script>
 </body>
