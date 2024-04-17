@@ -10,6 +10,8 @@
 <body>
     <h2>Class Practice</h2>
 
+    <div id="clock"></div>
+
     <div id="myDiv">
         <br>
         <input id="txt1" value="Aviad">
@@ -20,7 +22,7 @@
     <button id="btn1" onclick="yesbtn()">MyButton</button><br><br><br>
     Number of clicks:
     <button id="clickButton" onclick="countClicks()">0</button><br>
-    Subtract a digit: 
+    Subtract a digit:
     <button id="subtractButton" onclick="subtractClicks()">-1</button><br>
     Reset:
     <button id="resetButton" onclick="resetCounter()">Reset</button><br><br>
@@ -47,6 +49,7 @@
         var btn2 = document.getElementById("btn2");
         var clickButton = document.getElementById("clickButton");
         var addButtonsButton = document.getElementById("addButtonsButton");
+        var clock = document.getElementById("clock");
 
         txt1.style.color = 'blue';
         txt2.style.color = 'red';
@@ -130,6 +133,22 @@
                 container.appendChild(button);
             }
         }
+
+        function count() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Add leading zeros if necessary
+            hours = (hours < 10 ? "0" : "") + hours;
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+
+            clock.innerText = hours + ":" + minutes + ":" + seconds;
+        }
+
+        setInterval(count, 1000);
     </script>
 </body>
 
