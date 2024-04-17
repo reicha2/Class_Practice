@@ -8,44 +8,49 @@
 </head>
 
 <body>
-    Class Practice<br><br>
+    <h2>Class Practice</h2>
 
     <div id="myDiv">
         <br>
-        <input id="txt1">
-        <input id="txt2">
+        <input id="txt1" value="Aviad">
+        <input id="txt2" value="Reich">
         <br><br>
     </div>
-    <br><br>
     <button id="btn2" onclick="nobtn()">click that button ---> </button>
-    <button id="btn1" onclick="yesbtn()"></button><br><br><br>
+    <button id="btn1" onclick="yesbtn()">MyButton</button><br><br><br>
     Number of clicks:
     <button id="clickButton" onclick="countClicks()">0</button><br>
     Subtract a digit: 
     <button id="subtractButton" onclick="subtractClicks()">-1</button><br>
     Reset:
-    <button id="resetButton" onclick="resetCounter()">Reset</button>
+    <button id="resetButton" onclick="resetCounter()">Reset</button><br><br>
+    <h2>Fun Buttons</h2>
+    <button id="multiplicationButton" onclick="showMultiplicationTable()">Try Me if you like Math!</button><br><br>
+    <button id="addButtonsButton" onclick="addButtons()">Add 5 Buttons</button><br><br>
 
-    <div>
-        <h2>Login</h2>
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <button type="button" onclick="login()">Login</button>
-        </form>
-    </div>
+    <div id="table"></div>
+
+    <h2>Login</h2>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
 
     <script>
-        txt1.value = 'Aviad';
-        txt2.value = 'Reich';
+        var txt1 = document.getElementById("txt1");
+        var txt2 = document.getElementById("txt2");
+        var myDiv = document.getElementById("myDiv");
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var clickButton = document.getElementById("clickButton");
+        var addButtonsButton = document.getElementById("addButtonsButton");
 
         txt1.style.color = 'blue';
         txt2.style.color = 'red';
-
         myDiv.style.backgroundColor = 'yellow';
-
         btn1.innerText = 'MyButton';
         btn1.style.backgroundColor = 'red';
         btn1.style.color = 'blue';
@@ -62,13 +67,19 @@
         clickButton.style.width = '200px';
         clickButton.style.height = '50px';
         clickButton.style.fontSize = '30px';
+        addButtonsButton.style.backgroundColor = 'green';
+        addButtonsButton.style.color = 'white';
+        addButtonsButton.style.borderRadius = '10px';
+        addButtonsButton.style.padding = '10px';
 
         function yesbtn() {
-            alert ('Great');
+            alert('Great');
         }
+
         function nobtn() {
-            alert ('Not this button! The button on the right!')
+            alert('Not this button! The button on the right!')
         }
+
         var clickCount = 0;
 
         function countClicks() {
@@ -90,11 +101,33 @@
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
 
-            // Check if username and password match
             if (username === "aviad" && password === "1234") {
                 alert("Welcome");
             } else {
                 alert("Username or password incorrect");
+            }
+        }
+
+        function showMultiplicationTable() {
+            var tableDiv = document.getElementById("table");
+            var tableHTML = "<h2>Multiplication Table</h2><br><table>";
+            for (var i = 1; i <= 10; i++) {
+                tableHTML += "<tr>";
+                for (var j = 1; j <= 10; j++) {
+                    tableHTML += "<td>" + (i * j) + "</td>";
+                }
+                tableHTML += "</tr>";
+            }
+            tableHTML += "</table>";
+            tableDiv.innerHTML = tableHTML;
+        }
+
+        function addButtons() {
+            var container = document.getElementById("myDiv");
+            for (var i = 0; i < 5; i++) {
+                var button = document.createElement("button");
+                button.innerText = "Button " + (i + 1);
+                container.appendChild(button);
             }
         }
     </script>
